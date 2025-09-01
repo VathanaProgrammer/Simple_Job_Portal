@@ -25,6 +25,11 @@ class User extends Authenticatable
         'company_logo',
     ];
 
+    public function jobs()
+    {
+        return $this->hasMany(Jobs::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

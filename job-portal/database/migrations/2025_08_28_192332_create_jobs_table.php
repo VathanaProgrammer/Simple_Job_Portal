@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('location');
+            $table->string('experience')->nullable();
             $table->string('employment_type');
             $table->string('salary_range')->nullable();
             $table->unsignedTinyInteger('status')->default(1); // 1=active, 0=closed

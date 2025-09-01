@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Login | JobAC')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="h-screen flex items-center justify-center bg-[#838383]">
@@ -14,7 +16,7 @@
         <header class="text-start w-full mb-2">
             <a href="/" class="text-[40px] font-semibold text-white">Job<span class="text-[#FFBB00]">AC</span></a>
         </header>
-        <form action="{{ route('login')}}" method="POST" enctype="multipart/form-data" class="w-full mx-auto px-10">
+        <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data" class="w-full mx-auto px-10">
             @csrf
             <h1 class="text-[40px] font-medium text-white text-center">Welcome Back</h1>
             <p class="text-white text-[14px] font-medium text-center">
@@ -26,10 +28,10 @@
                 <input type="email"
                     class="rounded-lg px-4 focus:ring-2 focus:outline-none focus:ring-[#4E1BE4] py-[6px] text-gray-800 bg-white mt-2 mb-4"
                     id="email" name="email" placeholder="Enter your email" required>\
-            
-                    @error('email')
-                        <div class="text-red-500 text-sm mt-1">{{ $message }}</div>                        
-                    @enderror
+
+                @error('email')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="flex flex-col mt-2">
@@ -38,10 +40,9 @@
                     class="rounded-lg px-4 focus:ring-2 focus:outline-none focus:ring-[#4E1BE4] py-[6px] text-gray-800 bg-white mt-2 mb-4"
                     id="password" name="password" placeholder="Enter your password" required>
 
-            @error('password')
-                <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
-                
-            @enderror
+                @error('password')
+                    <div class="text-red-500 text-sm mt-1">{{ $message }}</div>
+                @enderror
             </div>
             <div class="flex justify-between">
                 <div class="flex justify-start items-center w-1/2">

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Login | JobAC')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="h-screen flex items-center justify-center bg-[#838383]">
@@ -14,7 +16,8 @@
         <header class="text-start w-full mb-2">
             <a href="/" class="text-[40px] font-semibold text-white">Job<span class="text-[#FFBB00]">AC</span></a>
         </header>
-        <form action="{{ route('create_account')}}" method="POST" enctype="multipart/form-data" class="w-full mx-auto px-10">
+        <form action="{{ route('create_account') }}" method="POST" enctype="multipart/form-data"
+            class="w-full mx-auto px-10">
             @csrf
             <h1 class="text-[40px] font-medium text-white text-center">Create your account</h1>
             <p class="text-white text-[14px] font-medium text-center">

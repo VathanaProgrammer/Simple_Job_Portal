@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My App')</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/js/app.js')
 </head>
 
 <body class="bg-gray-200">
@@ -21,7 +22,8 @@
                 @guest
                     <!-- Only show if user is NOT logged in -->
                     <a href="{{ route('create_account') }}" class="text-[24px] font-medium text-[#4E1BE4]">Sign up</a>
-                    <a href="{{ route('login') }}" class="text-[24px] font-medium text-[#3B3B3B] bg-white rounded-full px-4 py-2 pb-3">
+                    <a href="{{ route('login') }}"
+                        class="text-[24px] font-medium text-[#3B3B3B] bg-white rounded-full px-4 py-2 pb-3">
                         Sign In
                     </a>
                 @endguest
@@ -31,15 +33,15 @@
                     <span class="text-[20px] font-medium text-gray-800">Hello, {{ Auth::user()->name }}</span>
 
                     <!-- Post button -->
-                    <a href="" class="text-[24px] font-medium text-white bg-[#4E1BE4] rounded-full ms-2 px-6 py-2 pb-3">
-                        Post
+                    <a href="{{ route('manage_page', ['username' => Str::slug(Auth::user()->name)]) }}"
+                        class="text-[24px] font-medium text-white bg-[#4E1BE4] rounded-full ms-2 px-6 py-2 pb-3">
+                        Your Post
                     </a>
 
                     <!-- Logout button -->
-                    <a href="#"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                       class="text-[24px] font-medium text-[#3B3B3B] bg-white rounded-full px-4 py-2 pb-3">
-                       Logout
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                        class="text-[24px] font-medium text-white bg-red-700 rounded-full px-4 py-2 pb-3">
+                        Logout
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
